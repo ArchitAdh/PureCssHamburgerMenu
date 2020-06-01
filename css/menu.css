@@ -11,9 +11,11 @@
   width: 50px;
   height: 50px;
   cursor: pointer; /* makes cursor like pointing finger rather than an arrow */
+
   opacity: 0;
-  /* we want toggler at that position but invisible */
   z-index: 2;
+  /* we click on the  toggler for the action to complete but we dont want toggler to be seen, we want hamburger to be seen.
+  So, we make opacity of toggler 0, making it invisble, but give the z-index 2 which is greater than that of hamburger, making toggler clickable */
 }
 
 .menu-wrap,
@@ -31,9 +33,10 @@
   justify-content: center;
 }
 
-/* hamburger line */
+/* hamburger lines */
 .menu-wrap .hamburger > div {
   /* targetting immediate div */
+  /* in this div we create  a small line of 2px height, for hamburger layout; and using psuedo selectors before and after, we make another two lines before and after it, give three lines */
   position: relative;
   width: 100%;
   height: 2px;
@@ -50,7 +53,9 @@
 .menu-wrap .hamburger > div::after {
   content: "";
   position: absolute;
+  /* the lines will offset from the parent positon, that is the above div, which is middle line */
   z-index: 1;
+  /* we want toggler to be clickable, so giving 1 places it behind the toggler */
   top: -10px;
   width: 100%;
   height: 2px;
@@ -78,8 +83,14 @@
 
 /* Rotate when hovered on checked */
 .menu-wrap .toggler:checked:hover + .hamburger > div {
+  /* need to learn these selector */
   transform: rotate(225deg);
 }
+
+/* -------------------------------------------------------- */
+
+/* We have hidden the menu, when not clicked, so this section of code is to make menu visible
+yo can see the rest of the code first and come back to later , to follow the workflow or if confused */
 
 /* Show Menu */
 .menu-wrap .toggler:checked ~ .menu {
@@ -95,6 +106,8 @@
   opacity: 1;
   transition: opacity 0.4s, ease 0.4s;
 }
+
+/* ------------------------------------------------------------- */
 
 .menu-wrap .menu {
   position: fixed;
@@ -114,6 +127,8 @@
 }
 
 .menu-wrap .menu > div {
+  /* In this div lies the overlay color */
+
   background: var(--overlay-color);
   border-radius: 50%;
   /* to have circular effect */
@@ -130,9 +145,11 @@
 }
 
 .menu-wrap .menu > div > div {
+  /* the purpose of this div I couldn't figure out */
+
   text-align: center;
   max-width: 90vw;
-  max-width: 100vh;
+  max-height: 100vh;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
